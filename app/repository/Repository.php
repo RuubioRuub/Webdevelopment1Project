@@ -8,8 +8,7 @@ class Repository
 
     public function __construct()
     {
-        require_once("../public/config.php");
-
+        require __DIR__ . '/../public/config.php';
         try {
 
             $this->connection = new PDO("mysql:host=$servername;dbname=$databasename", $username, $password);

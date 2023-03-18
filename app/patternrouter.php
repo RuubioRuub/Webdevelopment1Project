@@ -15,6 +15,12 @@ class PatternRouter
         // Path algorithm
         // pattern = /controller/method
 
+        // check if we are requesting an api route
+        $api = false;
+        if (str_starts_with($uri, "api/")) {
+            $uri = substr($uri, 4);
+            $api = true;
+        }
 
         // set default controller/method
         $defaultcontroller = 'home';
@@ -38,6 +44,9 @@ class PatternRouter
 
         // load the file with the controller class
         $filename = __DIR__ . '/controller/' . $controllerName . '.php';
+        if ($api) {
+            $filename = __DIR__ . '/api/controller/' . $controllerName . '.php';
+        }
         if (file_exists($filename)) {
             require $filename;
         } else {

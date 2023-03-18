@@ -10,8 +10,6 @@ class Game {
     public int $userScore;
     public int $criticScore;
 
-
-
 }
 
 ?>
