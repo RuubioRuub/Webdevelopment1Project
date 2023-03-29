@@ -23,16 +23,15 @@ class ReviewsController
         }
         if ($_SERVER["REQUEST_METHOD"] == "POST") {
             // read JSON from the request, convert it to an article object
-            
             $body = file_get_contents('php://input');
             $object = json_decode($body);
             $newReview = new Review();
-            $newReview->setWriter("Anonymous");
+            $newReview->setWriter($object->writer);
             $newReview->setTitle($object->title);
             $newReview->setBody($object->body);
             $newReview->setScore($object->score);
-            $gameid = htmlspecialchars($_GET['gameid']);
-            $newReview->setGameID($gameid);
+            //$gameid = htmlspecialchars($_GET['gameid']);
+            $newReview->setGameID($object->gameID);
 
             //Temporary default values for the following properties
             $newReview->setCompany("NONE");

@@ -1,5 +1,25 @@
 function addReview() {
+    const newReview = {
+        title: document.getElementById('title').value,
+        writer: 'Anonymous',
+        company: 'NONE',
+        score: document.getElementById('score').value,
+        body: document.getElementById('body').value,
+        criticreview: false,
+        gameID: id
+    };
 
+    fetch('http://localhost/api/reviews', {
+        method: 'POST',
+        //mode: 'no-cors',
+        headers: {
+            'Content-Type': 'application/json',
+
+        },
+        body: JSON.stringify(newReview),
+    }).catch(err => console.error(err));
+
+    appendReview(newReview);
 }
 
 function loadData() {

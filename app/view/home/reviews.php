@@ -46,7 +46,6 @@
         </div>
     </nav>
 
-    <script src="/js/reviews.js"></script>
 
     <!-- Display the game selected -->
     <div class="container-fluid" id="gamecontainer">
@@ -94,12 +93,11 @@
                 </div>
             </div>
 
-            <button type="button" class="btn btn-primary" onclick="addReview();">Post review</button>
+            <button type="button" class="btn btn-primary" onclick="addReview()">Post review</button>
         </div>
     </div>
+
     <div class="container" id="reviewslist">
-
-
         <!-- Reviews go here -->
         <!-- <?php
                 foreach ($reviews as $review) {
@@ -121,7 +119,9 @@
                 }
         ?> -->
     </div>
-
+<!-- var id is created to allow access to the currently selected game's id              -->
+    <script type="text/javascript">var id = <?= $game->gameID ?>;</script>  
+    <script src="/js/reviews.js"></script>
 
 </body>
 
