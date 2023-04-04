@@ -23,10 +23,10 @@ class LoginController
             $user = $this->loginService->getUserByUsername($username);
 
             if (password_verify($enteredPassword, $user->getPassword())) {
-                $_SESSION['user'] = $user;
-                $_SESSION['loggedin'] = true;
                 session_start();
-                header('Location: /home/index');
+                $_SESSION['username'] = $user->getUsername();
+                $_SESSION['loggedin'] = TRUE;
+                header('Location: /home');
             } else {
                 $message = "Login error: Username or password incorrect.";
             }

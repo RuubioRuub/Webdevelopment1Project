@@ -1,7 +1,7 @@
 <?php 
 class User {
 	private int $userID;
-	private string $userName;
+	private string $username;
 	private string $password;
 	private bool $criticacount;
 	private ?string $company;
@@ -15,14 +15,14 @@ class User {
 	{
 		$this->userID = $value;
 	}
-	public function getUserName(): string
+	public function getUsername(): string
 	{
-		return $this->userName;
+		return $this->username;
 	}
 
-	public function setUserName(string $value)
+	public function setUsername(string $value)
 	{
-		$this->userName = $value;
+		$this->username = $value;
 	}
 	public function getPassword(): string
 	{

@@ -30,9 +30,17 @@ require __DIR__ . '/../../header.php';
 </div>
 <div class="container review-form">
     <button class="btn btn-success mb-2" id="show-adding-form">Add a review</button>
-
     <!-- form to write the review -->
     <div class="container" id="write-review" style="display: none">
+        <h4>By: <span id="username">
+                <?php
+                if (isset($_SESSION['loggedin']))
+                    echo $_SESSION['username'];
+                else
+                    echo "Anonymous";
+                ?>
+            </span>
+        </h4>
         <div class="form-group row mb-1">
             <label for="title" class="col-sm-2 col-form-label">Title of your review:</label>
             <div class="col-sm-10">

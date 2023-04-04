@@ -1,8 +1,8 @@
 function addReview() {
     const newReview = {
         title: document.getElementById('title').value,
-        writer: 'Anonymous',
-        company: 'NONE',
+        writer: document.getElementById('username').innerText,
+        company: 'none',
         score: document.getElementById('score').value,
         body: document.getElementById('body').value,
         criticreview: false,
