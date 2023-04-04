@@ -16,7 +16,7 @@ require __DIR__ . '/../../header.php';
                             <strong><?php echo $message; ?></strong>
                         </div>
                     <?php } ?>
-                    <form action="/login/login" method="post">
+                    <form action="/login/authenticate" method="post">
                         <div class="mb-3">
                             <label for="username" class="form-label">Username</label>
                             <input type="text" class="form-control" name="username" id="username" aria-describedby="username" placeholder="enter your username">
@@ -27,7 +27,7 @@ require __DIR__ . '/../../header.php';
                         </div>
                         <div class="row mb-4 justify-content-between">
                             <div class="col"><button type="submit" class="btn btn-primary">Login</button></div>
-                            <div class="col"><a name="" id="" class="btn btn-secondary" href="/login/display" role="button">Register</a></div>
+                            <div class="col"><a name="" id="" class="btn btn-secondary" href="/login/register" role="button">Register</a></div>
                         </div>
                     </form>
                 </div>

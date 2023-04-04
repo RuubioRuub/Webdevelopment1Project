@@ -1,20 +1,21 @@
 <?php
-require __DIR__ . '/../repository/ReviewRepository.php';
+require __DIR__ . '/../service/reviewsservice.php';
 
 class ReviewsController
 {
-    private $repository;
+    private $reviewservice;
 
     function __construct()
     {
-        $this->repository = new ReviewRepository();
+        $this->reviewservice = new ReviewsService();
+        session_start();
     }
 
     public function index()
     {
         $gameid = htmlspecialchars($_GET['gameid']);
-        $game = $this->repository->getSelectedGame($gameid);
-        $reviews = $this->repository->getReviewsForSelectedGame($gameid);
+        $game = $this->reviewservice->getSelectedGame($gameid);
+        $reviews = $this->reviewservice->getReviewsForSelectedGame($gameid);
 
         require __DIR__ . '/../view/home/reviews.php';
     }
@@ -33,7 +34,7 @@ class ReviewsController
             $newReview->setCompany("NONE");
             $newReview->setCriticreview(FALSE);
             
-            $this->repository->addReview($newReview);
+            $this->reviewservice->addReview($newReview);
         }
     }
 }

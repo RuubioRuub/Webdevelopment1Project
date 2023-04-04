@@ -1,82 +1,110 @@
 <?php
 
-class Review implements JsonSerializable{
+class Review implements JsonSerializable
+{
 
-	public function jsonSerialize() : mixed
-    {
-        return get_object_vars($this);
-    }
+	public function jsonSerialize(): mixed
+	{
+		return get_object_vars($this);
+	}
 
-    private string $title;
-    private string $writer;
-    private string $company;
-    private int $score;
-    private string $body;
-    private bool $criticreview;
-    private int $gameID;
-    private int $reviewID;
+	private int $reviewID;
+	private int $userID;
+	private string $title;
+	private string $writer;
+	private string $company;
+	private int $score;
+	private string $body;
+	private bool $criticreview;
+	private int $gameID;
 
-	public function getTitle() : string {
+	public function getTitle(): string
+	{
 		return $this->title;
 	}
 
-	public function setTitle(string $value) {
+	public function setTitle(string $value)
+	{
 		$this->title = $value;
 	}
 
-	public function getWriter() : string {
+	public function getWriter(): string
+	{
 		return $this->writer;
 	}
 
-	public function setWriter(string $value) {
+	public function setWriter(string $value)
+	{
 		$this->writer = $value;
 	}
 
-	public function getCompany() : string {
+	public function getCompany(): string
+	{
 		return $this->company;
 	}
 
-	public function setCompany(string $value) {
+	public function setCompany(string $value)
+	{
 		$this->company = $value;
 	}
 
-	public function getScore() : int {
+	public function getScore(): int
+	{
 		return $this->score;
 	}
 
-	public function setScore(int $value) {
+	public function setScore(int $value)
+	{
 		$this->score = $value;
 	}
 
-	public function getBody() : string {
+	public function getBody(): string
+	{
 		return $this->body;
 	}
 
-	public function setBody(string $value) {
+	public function setBody(string $value)
+	{
 		$this->body = $value;
 	}
 
-	public function getCriticreview() : bool {
+	public function getCriticreview(): bool
+	{
 		return $this->criticreview;
 	}
 
-	public function setCriticreview(bool $value) {
+	public function setCriticreview(bool $value)
+	{
 		$this->criticreview = $value;
 	}
 
-	public function getGameID() : int {
+	public function getGameID(): int
+	{
 		return $this->gameID;
 	}
 
-	public function setGameID(int $value) {
+	public function setGameID(int $value)
+	{
 		$this->gameID = $value;
 	}
 
-	public function getReviewID() : int {
+	public function getReviewID(): int
+	{
 		return $this->reviewID;
 	}
 
-	public function setReviewID(int $value) {
+	public function setReviewID(int $value)
+	{
 		$this->reviewID = $value;
+	}
+
+	public function getUserID(): int
+	{
+		return $this->userID;
+	}
+
+	public function setUserID(int $value)
+	{
+		$this->userID = $value;
 	}
 }

@@ -1,48 +1,55 @@
-<?php
+<?php 
 class User {
-    private int $id;
-    private string $username;
-    private string $password;
-    private int $roleId;
-    private string $email;
+	private int $userID;
+	private string $userName;
+	private string $password;
+	private bool $criticacount;
+	private ?string $company;
 
-	public function getId() : int {
-		return $this->id;
+	public function getUserID(): string
+	{
+		return $this->userID;
 	}
 
-	public function setId(int $value) {
-		$this->id = $value;
+	public function setUserID(string $value)
+	{
+		$this->userID = $value;
+	}
+	public function getUserName(): string
+	{
+		return $this->userName;
 	}
 
-	public function getUsername() : string {
-		return $this->username;
+	public function setUserName(string $value)
+	{
+		$this->userName = $value;
 	}
-
-	public function setUsername(string $value) {
-		$this->username = $value;
-	}
-
-	public function getPassword() : string {
+	public function getPassword(): string
+	{
 		return $this->password;
 	}
 
-	public function setPassword(string $value) {
+	public function setPassword(string $value)
+	{
 		$this->password = $value;
 	}
 
-	public function getRoleId() : int {
-		return $this->roleId;
+	public function getCriticacount(): string
+	{
+		return $this->criticacount;
 	}
 
-	public function setRoleId(int $value) {
-		$this->roleId = $value;
+	public function setCriticacount(string $value)
+	{
+		$this->criticacount = $value;
+	}
+	public function getCompany(): string
+	{
+		return $this->company;
 	}
 
-	public function getEmail() : string {
-		return $this->email;
+	public function setTitle(string $value)
+	{
+		$this->company = $value;
 	}
-
-	public function setEmail(string $value) {
-		$this->email = $value;
-	}
-}
+} 
