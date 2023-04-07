@@ -32,7 +32,7 @@ require __DIR__ . '/../../header.php';
     <button class="btn btn-success mb-2" id="show-adding-form">Add a review</button>
     <!-- form to write the review -->
     <div class="container" id="write-review" style="display: none">
-        <h4>By: <span id="username">
+        <h4>By: <span id="username">  <!-- The username inserted into the new review -->
                 <?php
                 if (isset($_SESSION['loggedin']))
                     echo $_SESSION['username'];
@@ -66,26 +66,8 @@ require __DIR__ . '/../../header.php';
 
 <div class="container" id="reviewslist">
     <!-- Reviews go here -->
-    <!-- <?php
-            foreach ($reviews as $review) {
-            ?>
-            <div class="card">
-                <div class="row g-0">
-                    <div class="col-md-4">
-                        <div class="score"> <p><?= $review->getScore() ?> </p></div>
-                    </div>
-                    <div class="col-md-8">
-                        <div class="card-body">
-                            <h5 class="card-title"> <?= $review->getTitle() ?> </h5>
-                            <p class="card-text"><?= $review->getBody() ?> </p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        <?php
-            }
-        ?> -->
 </div>
+
 <!-- var id is created to allow access to the currently selected game's id              -->
 <script type="text/javascript">
     var id = <?= $game->gameID ?>;

@@ -1,13 +1,13 @@
 <?php
-require __DIR__ . '/../../repository/ReviewRepository.php';
+require __DIR__ . '/../../service/reviewsservice.php.php';
 
 class ReviewsController
 {
-    private $repository;
+    private $reviewservice;
 
     function __construct()
     {
-        $this->repository = new ReviewRepository();
+        $this->reviewservice = new ReviewsService();
     }
 
     public function index()
@@ -17,7 +17,7 @@ class ReviewsController
         header("Access-Control-Allow-Methods: *");
 
         if ($_SERVER["REQUEST_METHOD"] == "GET") {
-            $reviews = $this->repository->getAll();
+            $reviews = $this->reviewservice->getAll();
             header('Content-Type: application/json');
             echo json_encode($reviews);
         }
@@ -37,31 +37,7 @@ class ReviewsController
             $newReview->setCompany("NONE");
             $newReview->setCriticreview(FALSE);
             
-            $this->repository->addReview($newReview);
+            $this->reviewservice->addReview($newReview);
         }
-
-        // $gameid = htmlspecialchars($_GET['gameid']);
-        // $game = $this->repository->getSelectedGame($gameid);
-        // $reviews = $this->repository->getReviewsForSelectedGame($gameid);
-
-        // require __DIR__ . '/../view/home/reviews.php';
     }
-    // public function addReview()
-    // {
-    //     if ($_SERVER['REQUEST_METHOD'] == 'POST') {
-    //         $newReview = new Review();
-    //         $newReview->setWriter("Anonymous");
-    //         $newReview->setTitle(isset($_POST['title']) ? $_POST['title'] : null);
-    //         $newReview->setBody(isset($_POST['body']) ? $_POST['body'] : null);
-    //         $newReview->setScore(isset($_POST['score']) ? $_POST['score'] : null);
-    //         $gameid = htmlspecialchars($_GET['gameid']);
-    //         $newReview->setGameID($gameid);
-
-    //         //Temporary default values for the following properties
-    //         $newReview->setCompany("NONE");
-    //         $newReview->setCriticreview(FALSE);
-            
-    //         $this->repository->addReview($newReview);
-    //     }
-    // }
 }

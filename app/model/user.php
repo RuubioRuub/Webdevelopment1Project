@@ -3,6 +3,8 @@ class User {
 	private int $userID;
 	private string $username;
 	private string $password;
+	private string $email;
+	private string $role;
 	private bool $criticacount;
 	private ?string $company;
 
@@ -48,8 +50,26 @@ class User {
 		return $this->company;
 	}
 
-	public function setTitle(string $value)
+	public function setCompany(string $value)
 	{
 		$this->company = $value;
+	}
+	public function getEmail(): string
+	{
+		return $this->email;
+	}
+
+	public function setEmail(string $value)
+	{
+		$this->email = $value;
+	}
+	public function getRole(): string
+	{
+		return $this->role;
+	}
+
+	public function setRole(string $value)
+	{
+		$this->role = $value;
 	}
 } 

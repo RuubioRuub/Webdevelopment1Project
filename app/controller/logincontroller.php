@@ -26,6 +26,7 @@ class LoginController
                 session_start();
                 $_SESSION['username'] = $user->getUsername();
                 $_SESSION['loggedin'] = TRUE;
+                $_SESSION['role'] = ($user->getRole() == "Admin");
                 header('Location: /home');
             } else {
                 $message = "Login error: Username or password incorrect.";
@@ -34,10 +35,11 @@ class LoginController
     }
     public function register()
     {
-        require __DIR__ . '/../view/login/register.php'; 
+        require __DIR__ . '/../view/login/register.php';
     }
-    public function registerUser() {
-        
+    public function registerUser()
+    {
+
         if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 
             $username = $_POST['username'];
@@ -48,11 +50,12 @@ class LoginController
             $email = $_POST['email'];
             $iscritic = false;
 
-            if (isset($_POST['company'])) {
+            if ($_POST['company'] == "")
+                $company = "none";
+            else {
                 $iscritic = true;
                 $company = $_POST['company'];
-            } else
-                $company = "none";
+            }
 
             // Validate updated information
             if (empty($email) || !$this->loginService->getUserByEmail($email) == null) {
