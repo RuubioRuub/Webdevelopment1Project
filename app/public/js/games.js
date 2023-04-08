@@ -18,6 +18,8 @@ function addGame() {
     }).catch(err => console.error(err));
 
     appendGame(newGame);
+    document.getElementById('add-game').style.display = 'none';
+    document.getElementById('add-game').reset();
 }
 
 function loadData() {

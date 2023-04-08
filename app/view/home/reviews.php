@@ -31,13 +31,17 @@ require __DIR__ . '/../../header.php';
 <div class="container review-form">
     <button class="btn btn-success mb-2" id="show-adding-form">Add a review</button>
     <!-- form to write the review -->
-    <div class="container" id="write-review" style="display: none">
-        <h4>By: <span id="username">  <!-- The username inserted into the new review -->
+    <form id="write-review" style="display: none">
+        <h4>By: <span id="username"> <!-- The username inserted into the new review -->
                 <?php
                 if (isset($_SESSION['loggedin']))
                     echo $_SESSION['username'];
                 else
                     echo "Anonymous";
+
+                if (isset($_SESSION['company'])) {  //If the review is from a critic sompany info is stored in the db
+                    echo '<span id="company" style="display: none">' . $_SESSION['company'] . '</span>';
+                }
                 ?>
             </span>
         </h4>
@@ -61,7 +65,7 @@ require __DIR__ . '/../../header.php';
         </div>
 
         <button type="button" class="btn btn-primary" onclick="addReview()">Post review</button>
-    </div>
+    </form>
 </div>
 
 <div class="container" id="reviewslist">

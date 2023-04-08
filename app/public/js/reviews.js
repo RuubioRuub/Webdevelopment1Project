@@ -1,14 +1,21 @@
 function addReview() {
+    const companySpan = document.getElementById('company') //companySpan is only created when a critic is logged in and writing a review
+    var companyName = 'none';
+    var iscritic = false;
+    if (companySpan !== null) {
+        companyName = document.getElementById('company').innerText;
+        iscritic = true;
+    }
     const newReview = {
         title: document.getElementById('title').value,
         writer: document.getElementById('username').innerText,
-        company: 'none',
+        company: companyName,
         score: document.getElementById('score').value,
         body: document.getElementById('body').value,
-        criticreview: false,
+        criticreview: iscritic,
         gameID: id
     };
-
+    console.log(newReview);
     fetch('http://localhost/api/reviews', {
         method: 'POST',
         //mode: 'no-cors',
@@ -20,6 +27,8 @@ function addReview() {
     }).catch(err => console.error(err));
 
     appendReview(newReview);
+    document.getElementById('write-review').style.display = 'none';
+    document.getElementById('write-review').reset();
 }
 
 function loadData() {

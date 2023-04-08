@@ -32,10 +32,8 @@ class ReviewsController
             $newReview->setScore($object->score);
             //$gameid = htmlspecialchars($_GET['gameid']);
             $newReview->setGameID($object->gameID);
-
-            //Temporary default values for the following properties
-            $newReview->setCompany("NONE");
-            $newReview->setCriticreview(FALSE);
+            $newReview->setCompany($object->company);
+            $newReview->setCriticreview($object->criticreview);
             
             $this->reviewservice->addReview($newReview);
         }
