@@ -8,6 +8,7 @@ class LoginController
     function __construct()
     {
         $this->loginService = new LoginService();
+        session_start();
     }
 
     public function index()
@@ -23,13 +24,16 @@ class LoginController
             $user = $this->loginService->getUserByUsername($username);
 
             if (password_verify($enteredPassword, $user->getPassword())) {
-                session_start();
                 $_SESSION['username'] = $user->getUsername();
                 $_SESSION['loggedin'] = TRUE;
                 $_SESSION['role'] = ($user->getRole() == "Admin");
+                if ($user->getCriticacount()) {
+                    $_SESSION['company'] = $user->getCompany();
+                }
                 header('Location: /home');
             } else {
-                $message = "Login error: Username or password incorrect.";
+                echo "<script>alert('Incorrect username or password')</script>";
+                header('location: /login/register');
             }
         }
     }
@@ -73,5 +77,9 @@ class LoginController
                 $this->index();
             }
         }
+    }
+    public function logout() {
+        session_destroy(); 
+        header('location: /home');
     }
 }

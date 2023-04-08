@@ -14,7 +14,7 @@ require __DIR__ . '/../../header.php';
             <div class="col-md-4">
                 <!-- Since images are stored in the database as a LONGBLOB value, the data, charset and base64 parameters are 
                         used to display the image -->
-                <img src="data:image/jpg;charset=utf8;base64,<?php echo base64_encode($game->image); ?>" class="img-fluid rounded-start" alt="Loading image...">
+                <img src="/image/<?= $game->getImage(); ?>" class="img-fluid rounded-start" alt="Loading image...">
             </div>
             <div class="col-md-8">
                 <div class="card-body">
@@ -68,16 +68,13 @@ require __DIR__ . '/../../header.php';
     <!-- Reviews go here -->
 </div>
 
+<?php require __DIR__ . '/../../footer.php'; ?>
+
 <!-- var id is created to allow access to the currently selected game's id              -->
 <script type="text/javascript">
     var id = <?= $game->gameID ?>;
 </script>
 <script src="/js/reviews.js"></script>
-
-</body>
-
-</html>
-
 <script>
     document.getElementById('show-adding-form').addEventListener('click', function() {
         document.getElementById('write-review').style.display = 'block';

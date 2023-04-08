@@ -2,10 +2,10 @@
 require __DIR__ . '/../../header.php';
 ?>
 
-<div class="container review-form">
+<div class="container game-form">
     <button class="btn btn-success mb-2" id="show-adding-form">Add a game</button>
     <!-- form to write the review -->
-    <div class="container" id="write-review" style="display: none">
+    <form method="post" id="add-game" enctype="multipart/form-data" style="display: none">
         <h4>Add game</h4>
         <div class="form-group row mb-1">
             <label for="title" class="col-sm-2 col-form-label">Title:</label>
@@ -33,44 +33,23 @@ require __DIR__ . '/../../header.php';
         </div>
         <div class="mb-3">
             <label for="image" class="form-label">Image: </label>
-            <input type="file" class="" name="image" id="image">
+            <input type="file" class="" name="image" id="image" required>
         </div>
 
-        <button type="button" class="btn btn-primary" onclick="addReview()">Add</button>
-    </div>
+        <button type="submit" class="btn btn-primary" onclick="addGame()">Add</button>
+</form>
 </div>
-
-<div class="row" id="itemList">
+<div class="container">
     <h2>Games currently in the database</h2>
-
-    <?php
-
-    foreach ($games as $game) {
-    ?>
-        <div class="card mb-3" style="max-width: 540px;">
-            <div class="row g-0">
-                <div class="col-md-4">
-                    <!-- Since images are stored in the database as a LONGBLOB value, the data, charset and base64 parameters are 
-                        used to display the image -->
-                    <img src="data:image/jpg;charset=utf8;base64,<?php echo base64_encode($game->image); ?>" class="img-fluid rounded-start" alt="Loading image...">
-                </div>
-                <div class="col-md-8">
-                    <div class="card-body">
-                        <h5 class="card-title"> <?= $game->title ?> </h5>
-                        <p class="card-text"><?= $game->genre ?> </p>
-                        <a href="reviews?gameid=<?= $game->gameID ?>" class="btn btn-primary stretched-link">See reviews</a>
-                    </div>
-                </div>
-            </div>
-        </div>
-    <?php
-    }
-    ?>
+    <!-- Games go here -->
+    <div class="row" id="gamelist"></div>
 </div>
 
+<?php require __DIR__ . '/../../footer.php'; ?>
 
+<script src="/js/games.js"></script>
 <script>
     document.getElementById('show-adding-form').addEventListener('click', function() {
-        document.getElementById('write-review').style.display = 'block';
+        document.getElementById('add-game').style.display = 'block';
     });
 </script>

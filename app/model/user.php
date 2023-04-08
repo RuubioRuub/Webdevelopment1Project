@@ -36,12 +36,12 @@ class User {
 		$this->password = $value;
 	}
 
-	public function getCriticacount(): string
+	public function getCriticacount(): bool
 	{
 		return $this->criticacount;
 	}
 
-	public function setCriticacount(string $value)
+	public function setCriticacount(bool $value)
 	{
 		$this->criticacount = $value;
 	}

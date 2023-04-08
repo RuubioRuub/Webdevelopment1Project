@@ -14,7 +14,6 @@ class HomeController {
          require __DIR__ . '/../view/home/index.php';
     }
     public function manageGames() {
-        $games = $this->homeservice->getAllGames();
         require __DIR__ . '/../view/home/managegames.php';
     }
     public function addGame() {

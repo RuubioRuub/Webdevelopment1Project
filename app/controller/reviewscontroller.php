@@ -15,7 +15,6 @@ class ReviewsController
     {
         $gameid = htmlspecialchars($_GET['gameid']);
         $game = $this->reviewservice->getSelectedGame($gameid);
-        $reviews = $this->reviewservice->getReviewsForSelectedGame($gameid);
 
         require __DIR__ . '/../view/home/reviews.php';
     }

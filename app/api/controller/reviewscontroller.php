@@ -1,5 +1,5 @@
 <?php
-require __DIR__ . '/../../service/reviewsservice.php.php';
+require __DIR__ . '/../../service/reviewsservice.php';
 
 class ReviewsController
 {
@@ -22,7 +22,7 @@ class ReviewsController
             echo json_encode($reviews);
         }
         if ($_SERVER["REQUEST_METHOD"] == "POST") {
-            // read JSON from the request, convert it to an article object
+            // read JSON from the request, convert it to a review object
             $body = file_get_contents('php://input');
             $object = json_decode($body);
             $newReview = new Review();
