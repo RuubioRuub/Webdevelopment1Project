@@ -7,14 +7,14 @@ class Game implements JsonSerializable {
 		return get_object_vars($this);
 	}
 
-    public int $gameID;
-    public string $title;
-    public string $description;
-    public string $genre;
-    public string $publisher;
-    public string $image;
-    public int $userScore;
-    public int $criticScore;
+    private int $gameID;
+    private string $title;
+    private string $description;
+    private string $genre;
+    private string $publisher;
+    private string $image;
+    private ?int $userScore;
+    private ?int $criticScore;
 
     public function getGameID(): int
 	{
@@ -70,7 +70,24 @@ class Game implements JsonSerializable {
 	{
 		$this->image = $value;
 	}
+	public function getUserscore(): int
+	{
+		return $this->userScore;
+	}
 
+	public function setUserscore(int $value)
+	{
+		$this->userScore = $value;
+	}
+	public function getCriticscore(): int
+	{
+		return $this->criticScore;
+	}
+
+	public function setCriticscore(int $value)
+	{
+		$this->criticScore = $value;
+	}
 }
 
 ?>

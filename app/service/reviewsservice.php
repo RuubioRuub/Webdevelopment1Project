@@ -25,4 +25,7 @@ class ReviewsService {
     {
         $this->reviewrepository->addReview($review);
     }
+    public function getScore($gameID, $criticreview) {
+        return $this->reviewrepository->getScore($gameID, $criticreview);
+    }
 }

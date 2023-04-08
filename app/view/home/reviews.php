@@ -16,14 +16,16 @@ require __DIR__ . '/../../header.php';
                         used to display the image -->
                 <img src="/image/<?= $game->getImage(); ?>" class="img-fluid rounded-start" alt="Loading image...">
             </div>
-            <div class="col-md-8">
+            <div class="col-md-6">
                 <div class="card-body">
-                    <h5 class="card-title"> <?= $game->title ?> </h5>
-                    <p class="card-text"><?= $game->genre ?> </p>
+                    <h5 class="card-title"> <?= $game->getTitle() ?> </h5>
+                    <p class="card-text"><?= $game->getGenre() ?> </p>
                     <!-- Display the description -->
+                    <p class="card-text"> <?= $game->getDescription() ?> </p>
                 </div>
 
             </div>
+            <div class="col scorecol"><?= $game->getUserScore() ?></div>
         </div>
     </div>
 

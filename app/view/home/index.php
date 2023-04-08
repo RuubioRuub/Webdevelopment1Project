@@ -21,9 +21,9 @@ require __DIR__ . '/../../header.php';
                 </div>
                 <div class="col-md-8">
                     <div class="card-body">
-                        <h5 class="card-title"> <?= $game->title ?> </h5>
-                        <p class="card-text"><?= $game->genre ?> </p>
-                        <a href="/reviews?gameid=<?= $game->gameID ?>" class="btn btn-primary stretched-link">See reviews</a>
+                        <h5 class="card-title"> <?= $game->getTitle() ?> </h5>
+                        <p class="card-text"><?= $game->getGenre() ?> </p>
+                        <a href="/reviews?gameid=<?= $game->getGameID() ?>" class="btn btn-primary stretched-link">See reviews</a>
                     </div>
                 </div>
             </div>

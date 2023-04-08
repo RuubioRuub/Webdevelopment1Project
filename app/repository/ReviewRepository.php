@@ -5,7 +5,8 @@ require __DIR__ . '/../model/review.php';
 
 class ReviewRepository extends Repository
 {
-    public function getAll() {
+    public function getAll()
+    {
         $stmt = $this->connection->prepare("SELECT * FROM review ");
         $stmt->execute();
         $stmt->setFetchMode(PDO::FETCH_CLASS, 'review');
@@ -51,6 +52,27 @@ class ReviewRepository extends Repository
 
             $stmt->execute();
         } catch (PDOException $e) {
+            echo $e;
+        }
+    }
+    public function getScore($gameID, $criticreview)
+    {
+        try {
+        $stmt = $this->connection->prepare("SELECT AVG(score) FROM review WHERE criticreview = :critic AND gameID = :id");
+        if ($criticreview)
+            $stmt->bindValue(':critic', 1);
+        else
+            $stmt->bindValue(':critic', 0);
+        $stmt->bindvalue(':id', $gameID);
+        $stmt->execute();
+
+        $score = $stmt->fetchAll();
+
+        if (!$score || empty($score))
+            return null;
+
+        return $score[0][0];    //For reasons unknown to me AVG() returns an array instead of just the average score, hence why I select the first option in the array twice
+        } catch(PDOException $e) {
             echo $e;
         }
     }
