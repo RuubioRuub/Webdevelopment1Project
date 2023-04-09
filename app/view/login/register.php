@@ -26,7 +26,7 @@
                         Register
                     </div>
                     <div class="card-body">
-                        <form action="/login/registerUser" method="post" enctype="multipart/form-data" id="register-form">
+                        <form action="/login/register" method="post" enctype="multipart/form-data" id="register-form">
                             <div class="mb-3">
                                 <label for="username" class="form-label">Username:</label>
                                 <input type="text" class="form-control" name="username" id="username" required>

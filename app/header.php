@@ -7,12 +7,13 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
     <title>High-Score</title>
+    <link rel="stylesheet" href="/css/headerstyle.css">
 
 
 </head>
 
-<body>
-    <nav class="navbar navbar-expand-lg navbar-dark bg-dark" aria-label="Eighth navbar example">
+<body style="background-color: rgb(252, 252, 252);">
+    <nav class="navbar navbar-expand-lg navbar-dark " >
         <div class="container">
             <a class="navbar-brand" href="/home">High-Score</a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarsExample07" aria-controls="navbarsExample07" aria-expanded="false" aria-label="Toggle navigation">
@@ -33,10 +34,13 @@
                         <a class="nav-link" href="/login/logout">Logout</a>
                     </li>
                     <?php }
-                    if (isset($_SESSION['role']) && $_SESSION['role']) {   //Session role is true when the logged in user is an admin
+                    if (isset($_SESSION['role']) && $_SESSION['role'] == "Admin") {   
                     ?>
                         <li class="nav-item">
-                            <a href="/home/manageGames" class="nav-link">Manage games</a>
+                            <a href="/management/manageGames" class="nav-link">Manage games</a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="/management/manageAdminAccounts" class="nav-link">Manage admin accounts</a>
                         </li>
                     <?php } ?>
                     <?php if (isset($_SESSION['role'])) { ?>
@@ -58,4 +62,4 @@
         </div>
     </nav>
 
-    <div class="container mt-4">
+    <div class="container mt-4 website-body">

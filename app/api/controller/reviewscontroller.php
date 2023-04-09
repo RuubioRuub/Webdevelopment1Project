@@ -26,15 +26,14 @@ class ReviewsController
             $body = file_get_contents('php://input');
             $object = json_decode($body);
             $newReview = new Review();
-            $newReview->setWriter($object->writer);
-            $newReview->setTitle($object->title);
-            $newReview->setBody($object->body);
-            $newReview->setScore($object->score);
-            //$gameid = htmlspecialchars($_GET['gameid']);
-            $newReview->setGameID($object->gameID);
-            $newReview->setCompany($object->company);
-            $newReview->setCriticreview($object->criticreview);
-            
+            $newReview->setWriter(htmlspecialchars($object->writer));
+            $newReview->setTitle(htmlspecialchars($object->title));
+            $newReview->setBody(htmlspecialchars($object->body));
+            $newReview->setScore(htmlspecialchars($object->score));
+            $newReview->setGameID(htmlspecialchars($object->gameID));
+            $newReview->setCompany(htmlspecialchars($object->company));
+            $newReview->setCriticreview(htmlspecialchars($object->criticreview));
+
             $this->reviewservice->addReview($newReview);
         }
     }

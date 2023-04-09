@@ -16,9 +16,10 @@ class ReviewsController
         $gameid = htmlspecialchars($_GET['gameid']);
         $game = $this->reviewservice->getSelectedGame($gameid);
         $userscore = $this->reviewservice->getScore($gameid, false);
+        $criticscore = $this->reviewservice->getScore($gameid, true);
         $game->setUserscore($userscore);
-        echo $game->getUserscore();
+        $game->setCriticscore($criticscore);
 
-        require __DIR__ . '/../view/home/reviews.php';
+        require __DIR__ . '/../view/review/reviews.php';
     }
 }

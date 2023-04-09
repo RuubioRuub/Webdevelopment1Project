@@ -9,7 +9,7 @@ require __DIR__ . '/../../header.php';
 <!-- Display the game selected -->
 <div class="container-fluid" id="gamecontainer">
 
-    <div class="card mb-3">
+    <div class="card gamecard mb-3">
         <div class="row g-0">
             <div class="col-md-4">
                 <!-- Since images are stored in the database as a LONGBLOB value, the data, charset and base64 parameters are 
@@ -25,7 +25,36 @@ require __DIR__ . '/../../header.php';
                 </div>
 
             </div>
-            <div class="col scorecol"><?= $game->getUserScore() ?></div>
+            <div class="card-footer ">
+                <div class="row score-row">
+                    <div class="col">
+                        <h5>Userscore: </h5>
+                        <?php if (is_null($game->getUserScore())) {
+                            echo "<p>There are no user reviews for this game";
+                        } else { ?>
+                            <div class="score gamescore 
+                            <?php if ($game->getUserScore() < 40) { //Sets the class to low or mid if the score is below a certain value
+                                echo "low";
+                            } else if ($game->getUserScore() < 80) {
+                                echo "mid";
+                            } ?>"><?= $game->getUserScore() ?></div>
+                        <?php } ?>
+                    </div>
+                    <div class="col">
+                        <h5>Criticscore: </h5>
+                        <?php if (is_null($game->getCriticscore())) {
+                            echo "<p>There are no critic reviews for this game";
+                        } else { ?>
+                            <div class="score gamescore 
+                        <?php if ($game->getCriticscore() < 40) {
+                                echo "low";
+                            } else if ($game->getCriticscore() < 80) {
+                                echo "mid";
+                            } ?>"><?= $game->getCriticscore() ?></div>
+                        <?php } ?>
+                    </div>
+                </div>
+            </div>
         </div>
     </div>
 
@@ -56,7 +85,7 @@ require __DIR__ . '/../../header.php';
         <div class="form-group row mb-1">
             <label for="score" class="col-sm-2 col-form-label">Score (0 - 100):</label>
             <div class="col-sm-10">
-                <input type="score" class="form-control" id="score" name="score" placeholder="Rate the game from 0 to 100" required>
+                <input type="number" min="0" max="100" class="form-control" id="score" name="score" required>
             </div>
         </div>
         <div class="form-group row mb-1">
@@ -70,7 +99,7 @@ require __DIR__ . '/../../header.php';
     </form>
 </div>
 
-<div class="container" id="reviewslist">
+<div class="container-fluid" id="reviewslist">
     <!-- Reviews go here -->
 </div>
 
@@ -78,7 +107,7 @@ require __DIR__ . '/../../header.php';
 
 <!-- var id is created to allow access to the currently selected game's id              -->
 <script type="text/javascript">
-    var id = <?= $game->gameID ?>;
+    var id = <?= $game->getGameID() ?>;
 </script>
 <script src="/js/reviews.js"></script>
 <script>
@@ -86,3 +115,13 @@ require __DIR__ . '/../../header.php';
         document.getElementById('write-review').style.display = 'block';
     });
 </script>
+<style scoped>
+    .mid {
+        /* Games or reviews with a score below a certain value have their score element in different colors */
+        background-color: rgb(250, 233, 0);
+    }
+
+    .low {
+        background-color: red;
+    }
+</style>

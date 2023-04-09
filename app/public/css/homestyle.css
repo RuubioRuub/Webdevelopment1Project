@@ -1,4 +1,13 @@
 .card {
     margin-right: 50px;
     margin-left: 50px;
+    padding: 0px;
+    max-width: 540px;
+    border-width: 2px;
+}
+
+.card-footer {
+    display: flex;
+    justify-content: center;
+    background-color: rgb(66, 66, 66);
 }

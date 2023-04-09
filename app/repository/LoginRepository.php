@@ -8,8 +8,9 @@ class LoginRepository extends Repository
     public function getUserByUsername($username)
     {
         try {
-            $stmt = $this->connection->prepare('SELECT *, role.role FROM user 
-                                                JOIN role ON user.role = role.id
+            $stmt = $this->connection->prepare('SELECT user.userID, user.username, user.password, user.email, role.role, user.criticaccount, user.company 
+                                                FROM user 
+                                                JOIN role ON user.role = role.id 
                                                 WHERE username = :username');
             $stmt->bindValue(':username', $username);
             $stmt->execute();
@@ -17,7 +18,7 @@ class LoginRepository extends Repository
             $stmt->setFetchMode(PDO::FETCH_CLASS, 'user');
             $users = $stmt->fetchAll();
 
-            if (is_null($users) || empty($users))
+            if (!$users || empty($users))
                 return null;
 
             return $users[0];
@@ -44,18 +45,17 @@ class LoginRepository extends Repository
             echo $e;
         }
     }
-    public function register($username, $password, $email, $criticacount, $company)
+    public function register($username, $password, $email, $criticaccount, $company)
     {
         try {
-            $query = "INSERT INTO `user`(`username`, `password`, `email`, `role`, `criticacount`, `company`) 
-                                VALUES (:username,:password,:email,:role,:criticacount,:company)";
-            $stmt = $this->connection->prepare($query);
+            $stmt = $this->connection->prepare("INSERT INTO `user`(`username`, `password`, `email`, `role`, `criticaccount`, `company`) 
+                                                VALUES (:username,:password,:email,:role,:criticaccount,:company)");
             $stmt->bindValue(':username', $username);
             $stmt->bindValue(':password', $password);
-            if ($criticacount)
-                $stmt->bindValue(':criticacount', 1);
+            if ($criticaccount)
+                $stmt->bindValue(':criticaccount', 1);
             else
-                $stmt->bindValue(':criticacount', 0);
+                $stmt->bindValue(':criticaccount', 0);
 
             $stmt->bindValue(':email', $email);
             $stmt->bindValue(':role', 1);

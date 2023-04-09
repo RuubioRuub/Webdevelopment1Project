@@ -1,11 +1,17 @@
 <?php 
-class User {
+class User implements JsonSerializable {
+
+	public function jsonSerialize(): mixed
+	{
+		return get_object_vars($this);
+	}
+
 	private int $userID;
 	private string $username;
 	private string $password;
 	private string $email;
 	private string $role;
-	private bool $criticacount;
+	private bool $criticaccount;
 	private ?string $company;
 
 	public function getUserID(): string
@@ -36,14 +42,14 @@ class User {
 		$this->password = $value;
 	}
 
-	public function getCriticacount(): bool
+	public function getCriticaccount(): bool
 	{
-		return $this->criticacount;
+		return $this->criticaccount;
 	}
 
-	public function setCriticacount(bool $value)
+	public function setCriticaccount(bool $value)
 	{
-		$this->criticacount = $value;
+		$this->criticaccount = $value;
 	}
 	public function getCompany(): string
 	{

@@ -3,7 +3,6 @@
 
 class Repository
 {
-
     protected $connection;
 
     public function __construct()

@@ -30,8 +30,8 @@ class GameController
             $newGame->setPublisher(htmlspecialchars($object->publisher));
             $newGame->setGenre(htmlspecialchars($object->genre));
             $newGame->setDescription(htmlspecialchars($object->description));
-            $newGame->setImage($object->image);
-            
+            $newGame->setImage(htmlspecialchars($object->image));
+
             $filename = $_FILES["image"]["name"];
             $tempname = $_FILES["image"]["tmp_name"];
             $folder = "./image/" . $filename;
@@ -40,5 +40,4 @@ class GameController
             $this->gameservice->addGame($newGame);
         }
     }
-    
 }

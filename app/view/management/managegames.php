@@ -16,19 +16,19 @@ require __DIR__ . '/../../header.php';
         <div class="form-group row mb-1">
             <label for="publisher" class="col-sm-2 col-form-label">Publisher:</label>
             <div class="col-sm-10">
-                <input type="publisher" class="form-control" id="publisher" name="publisher" placeholder="Enter who published the game" required>
+                <input type="text" class="form-control" id="publisher" name="publisher" placeholder="Enter who published the game" required>
             </div>
         </div>
         <div class="form-group row mb-1">
             <label for="genre" class="col-sm-2 col-form-label">Genre:</label>
             <div class="col-sm-10">
-                <textarea class="form-control" id="genre" name="genre" placeholder="Enter a genre for the game" required></textarea>
+                <input type="text" class="form-control" id="genre" name="genre" placeholder="Enter a genre for the game" required>
             </div>
         </div>
         <div class="form-group row mb-1">
             <label for="description" class="col-sm-2 col-form-label">Description:</label>
             <div class="col-sm-10">
-                <textarea class="form-control" id="description" name="description" placeholder="The game's description" required></textarea>
+                <input type="text" class="form-control" id="description" name="description" placeholder="The game's description" required>
             </div>
         </div>
         <div class="mb-3">

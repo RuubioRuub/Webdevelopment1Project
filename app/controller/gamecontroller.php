@@ -8,12 +8,13 @@ class GameController
     function __construct()
     {
         $this->gameservice = new GameService();
+        session_start();
     }
     public function searchGame()
     {
         if ($_SERVER["REQUEST_METHOD"] == "GET") {
             try {
-                $searchvalue = $_GET["search"];
+                $searchvalue = htmlspecialchars($_GET["search"]);
                 $games = $this->gameservice->searchGame($searchvalue);
 
                 if (is_null($games))

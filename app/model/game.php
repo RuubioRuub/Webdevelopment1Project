@@ -70,21 +70,21 @@ class Game implements JsonSerializable {
 	{
 		$this->image = $value;
 	}
-	public function getUserscore(): int
+	public function getUserscore(): int | null
 	{
 		return $this->userScore;
 	}
 
-	public function setUserscore(int $value)
+	public function setUserscore($value)
 	{
 		$this->userScore = $value;
 	}
-	public function getCriticscore(): int
+	public function getCriticscore(): int | null
 	{
 		return $this->criticScore;
 	}
 
-	public function setCriticscore(int $value)
+	public function setCriticscore($value)
 	{
 		$this->criticScore = $value;
 	}

@@ -11,11 +11,6 @@ require __DIR__ . '/../../header.php';
                     Login
                 </div>
                 <div class="card-body">
-                    <?php if (isset($message)) { ?>
-                        <div class="alert alert-danger" role="alert">
-                            <strong><?php echo $message; ?></strong>
-                        </div>
-                    <?php } ?>
                     <form action="/login/authenticate" method="post">
                         <div class="mb-3">
                             <label for="username" class="form-label">Username</label>
