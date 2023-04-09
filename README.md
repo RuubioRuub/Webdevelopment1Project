@@ -1,3 +1,14 @@
+# Web development 1 project by Ruben Walkeuter, class IT2A, 664759
+
+# Website url: 
+https://high-score-project.000webhostapp.com 
+
+# Account info: 
+Log in as Admin: username = Ruub, password = Password
+Log in as User: username = Gamer, password = IPlayGames
+Log in as critic: username = GameCritic , password = Reviewer101 
+
+
 # Docker template for PHP projects
 This repository provides a starting template for PHP application development.
 

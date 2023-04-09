@@ -20,7 +20,7 @@
                 <span class="navbar-toggler-icon"></span>
             </button>
 
-            <div class="collapse navbar-collapse" id="navbarsExample07">
+            <div class="collapse navbar-collapse">
                 <ul class="navbar-nav me-auto mb-2 mb-lg-0">
                     <li class="nav-item">
                         <a class="nav-link active" aria-current="page" href="/">Home</a>
@@ -43,16 +43,7 @@
                             <a href="/management/manageAdminAccounts" class="nav-link">Manage admin accounts</a>
                         </li>
                     <?php } ?>
-                    <?php if (isset($_SESSION['role'])) { ?>
-                        <li class="nav-item dropdown">
-                            <a class="nav-link dropdown-toggle" href="#" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Manage</a>
-                            <ul class="dropdown-menu">
-                                <li><a class="dropdown-item" href="/managegames">Manage games</a></li>
-                                <li><a class="dropdown-item" href="#">Another action</a></li>
-                                <li><a class="dropdown-item" href="#">Something else here</a></li>
-                            </ul>
-                        </li>
-                    <?php } ?>
+                    
                 </ul>
                 <form role="search" method="get" action="/game/searchGame">
                     <input class="form-control" type="search" name="search" placeholder="Search" aria-label="Search">
